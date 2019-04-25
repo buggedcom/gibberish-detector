@@ -8,3 +8,5 @@
 # https://github.com/sindresorhus/ama/issues/479#issuecomment-310661514
 /package-lock.json
 /yarn.lock
+/.idea
+/.DS_Store

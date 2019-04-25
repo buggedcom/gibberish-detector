@@ -1,13 +1,13 @@
 {
-  "name": "package-skeleton",
-  "version": "1.0.5",
-  "description": "Skeleton of a simple NPM Package with Babel and CI already configured.",
-  "license": "ISC",
+  "name": "gibberish-detector",
+  "version": "0.1.0",
+  "description": "A Node JS port of the PHP and Python gibberish detection algorithms.",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amercier/npm-package-skeleton"
+    "url": "https://github.com/buggedcom/gibberish-detector"
   },
-  "author": "Alex Mercier <pro.alexandre.mercier@gmail.com> (http://amercier.com)",
+  "author": "Oliver Lillie <buggedcom@gmail.com>",
   "engines": {
     "node": ">=6",
     "npm": ">=3"
@@ -31,19 +31,11 @@
   ],
   "main": "dist/index.js",
   "keywords": [
-    "package",
-    "skeleton",
-    "example",
-    "node",
-    "npm",
-    "babel",
-    "ci",
-    "code",
-    "codecov",
-    "coverage",
-    "eslint",
-    "gemnasium",
-    "jest"
+    "gibberish",
+    "detector",
+    "spam",
+    "markov chain",
+    "markov"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -62,8 +54,8 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-unicorn": "^8.0.0",
-    "husky": "^1.1.3",
-    "jest": "^23.6.0",
+    "husky": "^2.1.0",
+    "jest": "^24.7.1",
     "lint-staged": "^8.0.4",
     "npm-run-all": "^4.1.3",
     "prettier": "^1.15.1",

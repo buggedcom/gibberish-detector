@@ -1,33 +1,34 @@
 language: node_js
 matrix:
   include:
-    - node_js: node # Current
+    - node_js: node
       env: BUILD_DOCS=true REPORT_COVERAGE=true
-    - node_js: lts/* # Latest LTS
+    - node_js: lts/*
       env: NPM_DEPLOY=true
     - node_js: lts/carbon
-    - node_js: lts/boron # Minimum required
+    - node_js: lts/boron
 install:
-  - npm install --loglevel http # Prevent timeouts for inactivity
+  - npm install --loglevel http
 before_script:
   - npm run lint
 script:
   - npm test -- --coverage
-  - '[[ "$BUILD_DOCS" != true ]] || npm run doc' # Ensures ESDoc generation doesn't fail
+  - '[[ "$BUILD_DOCS" != true ]] || npm run doc'
   - '[[ "$REPORT_COVERAGE" != true ]] || codecov'
-after_success: >
+after_success: |
   if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$BUILD_DOCS" = "true" ]; then
-    bash <(curl -s https://gist.githubusercontent.com/amercier/9d41002c79ac8e9fbd36bc1815d934b1/raw/) amercier/npm-package-skeleton;
+    bash <(curl -s https://gist.githubusercontent.com/amercier/9d41002c79ac8e9fbd36bc1815d934b1/raw/) buggedcom/gibberish-detector;
   fi
 deploy:
   provider: npm
-  email: pro.alexandre.mercier@gmail.com
-  api_key: $NPM_AUTH_TOKEN
+  email: buggedcom@gmail.com
+  api_key:
+    secure: lk+05lJnW6UfhCNjkvh5rJisS9U5em7BGwjkEa7q+vOY7sWUmPbjK4KVSJwoyKWWmjjg9ZJSblTA9m6mNRm0Wiokq0hFa2NhImLtfJAYCsrludoMokVhRIiBcEVZfSYlhAt+XE7vp8mkgpxMObRGLmOH+mLI9q/kJKDyh490Qt5FqzXc0NHTbVqXtNYqNWtWdx8Z6wsoH15F1liVaOEEygRU1p0Y5le73AZyT0rpABRAKbUGkltsDxSeQQAttJwjqarEndvw1V86Et10lmlY8vpOa+l7TSj8kQjkOl3TqGStctCd5RYDvS/UvG/tlNqk2ig8/ouXyrtl4UXdJ9qBiReK3yIj+Nb/ziI6hWXUhn3lf7ewXkg49HzrBdUv2PYjEcqBwI+4WYG+PUwVAXpEmdZ10W1oPaBi1pWVlYPPHidgibg46YLIPRFcYdfDK8qRbrmg+BxAn04FAxsriQyHGXZXxJ5jJ7UAnKxpofD5zIhVgH1Jok/qbPUFcjMIrTpffCAEIvLcmHM08OegErE8eTrQDAheGzvBrXNzS+FrkdD+bXsJzWQd/YY31n6j9rD+cvvs537H6cxZJfbju6IjtzxO7Q5ja3Mr6WkRYpouM/+gFGeEu+6Cq7BIzXSpkXHYydYW44Oz0VsS8USozUWPkwKgjLhGvjDEdoOlMNj8GLI=
   skip_cleanup: true
   on:
     tags: true
-    repo: amercier/npm-package-skeleton # Prevents publishing on PRs
+    repo: buggedcom/gibberish-detector # Prevents publishing on PRs
     condition: $NPM_DEPLOY = true # Prevents publishing on each matrix build
 cache:
   directories:
-    - $HOME/.npm
+    - "$HOME/.npm"
